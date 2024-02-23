@@ -51,10 +51,16 @@
                 <input type="text" class="acInp">
                 <button class="buttonSubmit" onclick="primeiroCalculo()">Submit</button>
             </div>
+            <div class="primeiroResultado">
+
+            </div>
             <div class="ap2">
                 <h3>AP2</h3>
                 <input type="text" class="ap2Inp">
                 <button class="buttonSubmit" onclick="segundoCalculo()">Submit</button>
+            </div>
+            <div class="segundoResultado">
+
             </div>
 
 
@@ -62,6 +68,9 @@
 
         <script>
             let faltaAp2 = ''
+            let respostaAs = ''
+            let respostaAp2 = ''
+
             function primeiroCalculo () {
                 const ap1 = document.querySelector('.ap1Inp').value
                 const toNumberAp1 = parseInt(ap1)
@@ -74,10 +83,27 @@
                 const valorAc = toNumberAc * 0.2
 
                 faltaAp2 = (media - (valorAc + valorAp1))/0.4
-
                 console.log(faltaAp2)
 
-                return faltaAp2
+                if (faltaAp2 <= 7) {
+                    respostaAp2 = `Você não está em uma situação maravilhosa, é preciso de <h4>${faltaAp2}</h4> para passar sem As`
+                } else if (faltaAp2 > 8) {
+                    respostaAp2 = `Sua situação é crítica, você precisa de <h4>${faltaAp2}</h4> para passar sem AS`
+                } else if (5 < faltaAp2 < 7) {
+                    respostaAp2 = `Sua situação é normal e confortável, você precisa de <h4>${faltaAp2}</h4>, super nomal essa nota na AP2`
+                } else if (5 > faltaAp2) {
+                    respostaAp2 = `Sua situação é confortável, quem precisa de menos de 5 para passar está em uma ótima condição. Você precisa <h4>${faltaAp2}</h4>`
+                } else if (3.5> faltaAp2) {
+                    respostaAp2 = `Vai focar em outras matérias que você precisa de ponto, porque essa você só precisa de <h4>${faltaAp2}</h4>, se não passar sem As você é incopetente`
+                } else {
+                    respostaAp2 = `Você entrou algum dado errado`
+                }
+
+                
+                const html = `${respostaAp2}`
+
+                document.querySelector('.primeiroResultado').innerHTML = html
+
             }
 
             function segundoCalculo() {
@@ -87,13 +113,16 @@
                 const faltaAp2s = faltaAp2
 
                 if (toNumberAp2 < faltaAp2) {
-                    console.log('Fail')
+                    respostaAs	= '<h2>Você Está de AS</h2>'
                 } else {
-                    console.log('Vitoria')
+                    respostaAs = '<h2>Você passou direto</h2>'
                 }
 
-            }
+                const html = `${respostaAs}`
+                document.querySelector('.segundoResultado').innerHTML = html
+                
 
+            }
 
 
 
