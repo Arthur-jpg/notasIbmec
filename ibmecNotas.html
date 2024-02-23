@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .sidebar {
+                border-right: 1px solid black;
+                width: 50px;
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                align-content: center;
+                height: max-content;
+            }
+
+            .main {
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+            .ac {
+                display: flex;
+                flex-direction: column;
+            }
+            .acInp {
+                margin-bottom: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="sidebar">
+            <h4>SideBar</h4>
+        </div>
+        <div class="main">
+            <div class="ap1">
+                <h3>AP1</h3>
+                <input type="text" class="ap1Inp">
+            </div>
+            <div class="ac">
+                <h3>AC</h3>
+                <input type="text" class="acInp">
+                <button class="buttonSubmit" onclick="primeiroCalculo()">Submit</button>
+            </div>
+            <div class="ap2">
+                <h3>AP2</h3>
+                <input type="text" class="ap2Inp">
+                <button class="buttonSubmit" onclick="segundoCalculo()">Submit</button>
+            </div>
+
+
+        </div>
+
+        <script>
+            let faltaAp2 = ''
+            function primeiroCalculo () {
+                const ap1 = document.querySelector('.ap1Inp').value
+                const toNumberAp1 = parseInt(ap1)
+                const ac = document.querySelector('.acInp').value
+                const toNumberAc = parseInt(ac)
+
+                const media = 7
+
+                const valorAp1 = toNumberAp1 * 0.4
+                const valorAc = toNumberAc * 0.2
+
+                faltaAp2 = (media - (valorAc + valorAp1))/0.4
+
+                console.log(faltaAp2)
+
+                return faltaAp2
+            }
+
+            function segundoCalculo() {
+                const ap2 = document.querySelector('.ap2Inp').value
+                const toNumberAp2 = parseInt(ap2)
+
+                const faltaAp2s = faltaAp2
+
+                if (toNumberAp2 < faltaAp2) {
+                    console.log('Fail')
+                } else {
+                    console.log('Vitoria')
+                }
+
+            }
+
+
+
+
+        </script>
+    </body>
+</html>
